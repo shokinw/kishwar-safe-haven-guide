@@ -1,68 +1,67 @@
 
 import { useState } from "react";
-import { Bell, BellRing } from "lucide-react";
+import { Share2, Download, Facebook, Twitter } from "lucide-react";
 
 const Footer = () => {
   const [showSubscribeMessage, setShowSubscribeMessage] = useState(false);
+  const currentDate = new Date();
   
   return (
-    <footer className="bg-darkBg text-white py-10">
+    <footer className="bg-darkBg text-white py-10 mt-8">
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
           <div>
-            <h3 className="text-xl font-bold mb-4">Access Offline</h3>
-            <p className="mb-4">
-              Save this page for offline access during emergencies when internet connectivity might be limited.
-            </p>
-            <div className="flex space-x-4">
-              <button className="bg-white text-darkBg py-2 px-4 rounded font-bold hover:bg-gray-200 transition-colors">
-                Download Page
-              </button>
-              <button className="border border-white py-2 px-4 rounded font-bold hover:bg-white/10 transition-colors">
-                Save as PDF
-              </button>
+            <h3 className="text-xl font-bold mb-4">Quick Access</h3>
+            <div className="flex items-center">
+              <div className="bg-white p-2 rounded mr-4">
+                {/* Placeholder QR code - In production, use a real QR code image */}
+                <div className="w-32 h-32 bg-gray-200 rounded flex items-center justify-center">
+                  <span className="text-black text-xs text-center">QR Code<br/>for quick access</span>
+                </div>
+              </div>
+              <div className="space-y-3">
+                <p className="text-sm">
+                  Scan this code for instant access to Stay Safe Kishwar on your mobile device.
+                </p>
+                <button className="flex items-center bg-white/10 hover:bg-white/20 transition-colors rounded px-4 py-2">
+                  <Download className="h-4 w-4 mr-2" />
+                  <span className="text-sm">Save for Offline</span>
+                </button>
+              </div>
             </div>
           </div>
           
           <div>
-            <h3 className="text-xl font-bold mb-4">Stay Updated</h3>
+            <h3 className="text-xl font-bold mb-4">Share this page</h3>
             <p className="mb-4">
-              Receive alerts when new emergency information is available.
+              Help spread safety information to others in need.
             </p>
-            <div className="flex">
-              <input 
-                type="email" 
-                placeholder="Your email address" 
-                className="py-2 px-4 w-full rounded-l text-gray-800 focus:outline-none"
-              />
-              <button 
-                className="bg-actionOrange text-white py-2 px-4 rounded-r font-bold hover:bg-actionOrange/90 transition-colors"
-                onClick={() => setShowSubscribeMessage(true)}
-              >
-                Subscribe
+            <div className="flex space-x-4">
+              <button className="bg-blue-600 hover:bg-blue-700 p-2 rounded">
+                <Facebook className="h-5 w-5" />
+              </button>
+              <button className="bg-skyBlue hover:bg-skyBlue/90 p-2 rounded">
+                <Twitter className="h-5 w-5" />
+              </button>
+              <button className="bg-white/10 hover:bg-white/20 p-2 rounded">
+                <Share2 className="h-5 w-5" />
               </button>
             </div>
-            {showSubscribeMessage && (
-              <p className="text-green-300 mt-2">Thank you! You'll receive updates.</p>
-            )}
           </div>
         </div>
 
         <div className="border-t border-gray-700 pt-6 flex flex-col md:flex-row justify-between items-center">
           <div className="mb-4 md:mb-0">
-            <div className="flex items-center">
-              <BellRing className="h-5 w-5 text-emergency mr-2" />
-              <span className="font-bold text-lg">Stay Safe Kishwar</span>
-            </div>
+            <div className="font-bold text-lg">Stay Safe Kishwar</div>
             <p className="text-sm text-gray-400 mt-1">
               Emergency information and safety resources
             </p>
           </div>
           
-          <div className="flex space-x-6">
-            <a href="#" className="text-gray-400 hover:text-white">Terms</a>
-            <a href="#" className="text-gray-400 hover:text-white">Privacy</a>
-            <a href="#" className="text-gray-400 hover:text-white">Contact</a>
+          <div>
+            <p className="text-sm text-gray-400">
+              Last updated: {currentDate.toLocaleDateString()} at {currentDate.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}
+            </p>
           </div>
         </div>
         
