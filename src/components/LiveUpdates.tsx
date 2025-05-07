@@ -1,6 +1,6 @@
 
 import { useEffect, useState } from "react";
-import { News, Info, MessageSquare, MessageSquareWarning } from "lucide-react";
+import { Info, MessageSquare, MessageSquareWarning, Bell } from "lucide-react";
 
 const LiveUpdates = () => {
   const [updates, setUpdates] = useState([
@@ -16,7 +16,7 @@ const LiveUpdates = () => {
       type: "news",
       time: "9:15 AM",
       content: "Relief supplies arriving at Central Square distribution point.",
-      icon: <News className="h-5 w-5 text-blue-600" />
+      icon: <Bell className="h-5 w-5 text-blue-600" />
     },
     {
       id: 3,
